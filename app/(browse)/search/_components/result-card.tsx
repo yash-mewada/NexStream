@@ -1,12 +1,19 @@
 import { Thumbnail, ThumbnailSkeleton } from "@/components/thumbnail";
 import { VerifiedMark } from "@/components/verified-mark";
-import { Stream, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
 import { Skeleton } from "@/components/ui/skeleton";
 
 interface ResultCardProps {
-  data: Stream & { user: User };
+  data: {
+    id: string;
+    name: string;
+    thumbnailUrl: string | null;
+    isLive: boolean;
+    updatedAt: Date;
+    user: User;
+  };
 }
 
 export const ResultCard = ({ data }: ResultCardProps) => {
